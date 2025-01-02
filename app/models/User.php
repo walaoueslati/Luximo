@@ -1,5 +1,4 @@
 <?php
-// models/User.php
 
 require_once 'DataBase.php';
 
@@ -22,9 +21,16 @@ class User {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    
     public function deleteUser($id) {
         $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function getAllUsers() {
+        $stmt = $this->conn->query("SELECT id, name, email FROM users");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 

@@ -4,14 +4,12 @@ $title = "Cart";
 ob_start();
 session_start();
 
-// Vérifier si un utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     die("Vous devez être connecté pour voir votre panier.");
 }
 
-// Vérifier si un panier existe pour cet utilisateur dans le cookie
 $userId = $_SESSION['user_id'];
-$cartCookieName = "cart_$userId";  // Crée un nom de cookie unique pour chaque utilisateur
+$cartCookieName = "cart_$userId";  
 $cart = isset($_COOKIE[$cartCookieName]) ? json_decode($_COOKIE[$cartCookieName], true) : [];
 
 if (empty($cart)) {

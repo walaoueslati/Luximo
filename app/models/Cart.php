@@ -4,7 +4,6 @@ class Cart
 {
     private $cookieName = 'luximo_cart';
 
-    // Récupérer le contenu du panier
     public function getCart()
     {
         if (!isset($_COOKIE[$this->cookieName])) {
@@ -14,12 +13,10 @@ class Cart
         return json_decode($_COOKIE[$this->cookieName], true) ?? [];
     }
 
-    // Ajouter un article au panier
     public function addItem($id, $name, $price, $quantity = 1)
     {
         $cart = $this->getCart();
 
-        // Vérifier si l'article existe déjà dans le panier
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] += $quantity;
         } else {
@@ -34,7 +31,6 @@ class Cart
         $this->saveCart($cart);
     }
 
-    // Mettre à jour la quantité d'un article
     public function updateItem($id, $quantity)
     {
         $cart = $this->getCart();
@@ -43,14 +39,13 @@ class Cart
             if ($quantity > 0) {
                 $cart[$id]['quantity'] = $quantity;
             } else {
-                unset($cart[$id]); // Supprimer l'article si la quantité est 0
+                unset($cart[$id]); 
             }
 
             $this->saveCart($cart);
         }
     }
 
-    // Supprimer un article du panier
     public function deleteItem($id)
     {
         $cart = $this->getCart();
@@ -61,13 +56,11 @@ class Cart
         }
     }
 
-    // Vider le panier
     public function clearCart()
     {
-        setcookie($this->cookieName, '', time() - 3600, '/'); // Expire le cookie
+        setcookie($this->cookieName, '', time() - 3600, '/'); 
     }
 
-    // Calculer le total du panier
     public function getTotal()
     {
         $cart = $this->getCart();
@@ -80,7 +73,6 @@ class Cart
         return $total;
     }
 
-    // Sauvegarder le panier dans les cookies
     private function saveCart($cart)
     {
         setcookie($this->cookieName, json_encode($cart), time() + (86400 * 30), '/'); // Expire dans 30 jours

@@ -10,11 +10,11 @@
     <header>
         <nav>
             <div class="logo-container">
-                <img src="/../../images/home-sign-icon-front-side-white-background-removebg-preview.png" alt="Maison Logo" class="logo-image"/>
-                <span class="site-name">Luximo</span>
+                <img src="/../../public/images/home-sign-icon-front-side-white-background-removebg-preview.png" alt="Maison Logo" class="logo-image"/>
+                <a href="/../../../public/index.php" class="luximo"><span class="site-name">Luximo</span></a>  
             </div>
             <ul>
-                <li><a href="/../../app/views/carts/add.php">Sommaire</a></li>
+                <li><a href="/../../app/views/carts/add.php">Maisons</a></li>
                 <li><a href="https://www.mubawab.tn/" target="_blank" rel="noopener noreferrer">Notre partenaire</a></li>
                 <li><a href="/../../app/views/carts/view_cart.php">Mon Panier</a></li>
                 <li><a href="/../../app/views/items/add.php">Ajout Item</a></li>
@@ -27,7 +27,7 @@
     </main>
     <footer>
         <div>
-            <img src="/../../images/home-sign-icon-front-side-white-background-removebg-preview.png" alt="Maison Logo" class="logo-image"/>
+            <img src="/../../public/images/home-sign-icon-front-side-white-background-removebg-preview.png" alt="Maison Logo" class="logo-image"/>
         </div>
         <div>
             <p>Nous mettons à votre disposition une large sélection de biens immobiliers, que vous soyez à la recherche d\'une maison, d\'un appartement, d\'un terrain ou d\'un investissement immobilier. Notre expertise et notre accompagnement personnalisé font de nous votre partenaire immobilier de confiance.</p>

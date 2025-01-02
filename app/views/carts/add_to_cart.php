@@ -14,21 +14,15 @@ if (isset($_GET['id'])) {
         6 => ['name' => 'Maison traditionnelle en campagne', 'price' => 200000]
     ];
 
-    // Vérifier si l'ID existe dans le tableau
     if (isset($houses[$item_id])) {
-        // Récupérer l'ID utilisateur depuis la session
         $user_id = $_SESSION['user_id'];
-        $cart_cookie_name = "cart_$user_id";  // Créer un nom de cookie unique pour chaque utilisateur
+        $cart_cookie_name = "cart_$user_id";  
 
-        // Vérifier si un panier existe déjà pour cet utilisateur dans le cookie
         $cart = isset($_COOKIE[$cart_cookie_name]) ? json_decode($_COOKIE[$cart_cookie_name], true) : [];
 
-        // Ajouter l'article au panier ou augmenter sa quantité si déjà présent
         if (isset($cart[$item_id])) {
-            // Si l'article est déjà dans le panier, augmenter la quantité
             $cart[$item_id]['quantity'] += 1;
         } else {
-            // Si l'article n'est pas dans le panier, l'ajouter
             $cart[$item_id] = [
                 'id' => $item_id,
                 'name' => $houses[$item_id]['name'],
@@ -37,10 +31,8 @@ if (isset($_GET['id'])) {
             ];
         }
 
-        // Mettre à jour le cookie avec le panier
         setcookie($cart_cookie_name, json_encode($cart), time() + (86400 * 7), "/"); // Le cookie expire dans 7 jours
 
-        // Rediriger vers la page du panier après l'ajout
         header('Location: view_cart.php');
         exit;
     } else {

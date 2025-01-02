@@ -1,10 +1,9 @@
 <?php
-// Database.php
 class Database {
-    private $host = 'localhost'; // Database host
-    private $db_name = 'ecommerce'; // Database name
-    private $username = 'root'; // Database username
-    private $password = ''; // Database password (if any)
+    private $host = 'localhost'; 
+    private $db_name = 'ecommerce'; 
+    private $username = 'root'; 
+        private $password = ''; 
     private $conn;
 
     public function getConnection() {

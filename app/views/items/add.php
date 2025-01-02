@@ -1,9 +1,12 @@
 <?php
 $title = "Ajouter un Item";
 ob_start();
-?>
 
-<form action="../../controllers/ItemController.php?action=add" method="POST" enctype="multipart/form-data">
+?>
+<div>
+<h1>Login</h1>
+
+    <form action="../../controllers/ItemController.php?action=add" method="POST" enctype="multipart/form-data">
     <label for="name">Nom de l'Item :</label>
     <input type="text" name="name" id="name" required>
     <br>
@@ -18,6 +21,8 @@ ob_start();
     <br>
     <button type="submit">Ajouter</button>
 </form>
+</div>
+    
 
 <?php
 $content = ob_get_clean();

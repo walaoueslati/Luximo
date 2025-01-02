@@ -1,7 +1,4 @@
 <?php
-// user/add.php
-
-// Définir le titre et le contenu
 $title = "Inscription";
 ob_start();
 ?>

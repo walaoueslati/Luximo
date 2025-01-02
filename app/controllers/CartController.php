@@ -9,16 +9,14 @@ class CartController {
         $this->cart = new Cart();
     }
 
-    // Afficher le panier
+     
     public function index() {
         $cartItems = $this->cart->getCart();
         $total = $this->cart->getTotal();
 
-        // Charger la vue du panier
         include __DIR__ . '/../views/cart.php';
     }
 
-    // Ajouter un article au panier
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? null;
@@ -34,7 +32,6 @@ class CartController {
         }
     }
 
-    // Supprimer un article du panier
     public function remove() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? null;
@@ -48,7 +45,6 @@ class CartController {
         }
     }
 
-    // Mettre à jour la quantité d'un article
    
 }
 

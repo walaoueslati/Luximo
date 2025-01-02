@@ -1,16 +1,12 @@
 <?php
-// user/add.php
-
-// Définir le titre et le contenu
 $title = "Inscription";
 ob_start();
 ?>
 
 
 
-<!-- user/login.php -->
 <div>
-    <h1>Connexion</h1>
+    <h1>Login</h1>
     <form id="loginForm" action="../../controllers/UserController.php?action=login" method="POST">
         <div class="form-group">
             <label for="email">Email :</label>
@@ -21,7 +17,7 @@ ob_start();
             <input type="password" id="password" name="password" required>
         </div>
         <button type="submit">Se connecter</button>
-        <a href="user/add.php">Vous n'avez pas de compte ? Inscrivez-vous ici.</a>
+        <a href="./add.php">Vous n'avez pas de compte ? Inscrivez-vous ici.</a>
     </form>
 </div>
 <?php

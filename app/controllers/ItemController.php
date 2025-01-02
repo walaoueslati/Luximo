@@ -22,13 +22,11 @@ class ItemController {
                 die("Invalid input. Please fill in all fields correctly.");
             }
     
-            // Gérer l'upload de l'image
             $imagePath = null;
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $targetDir = __DIR__ . "/../../images/";
                 $targetFile = $targetDir . basename($_FILES['image']['name']);
     
-                // Vérifiez et déplacez le fichier uploadé
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
                     $imagePath = "/images/" . basename($_FILES['image']['name']);
                 } else {
@@ -36,7 +34,6 @@ class ItemController {
                 }
             }
     
-            // Ajouter l'item dans la base de données
             try {
                 $this->itemModel->addItem($name, $description, floatval($price), $imagePath);
                 echo "Item ajouté avec succès !";
@@ -51,14 +48,12 @@ class ItemController {
         
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Sanitize and validate input
             $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
 
             if (!$id || $id <= 0) {
                 die("Invalid item ID.");
             }
 
-            // Delete item from the database
             try {
                 $this->itemModel->deleteItem($id);
                 echo "Item deleted successfully!";
@@ -69,13 +64,10 @@ class ItemController {
     }
 }
 
-// Handle add or delete actions based on the request
 $controller = new ItemController();
 
-// Handle adding item
     $controller->add();
 
-// Handle deleting item
     $controller->delete();
 
 ?>
